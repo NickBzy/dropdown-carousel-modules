@@ -140,5 +140,70 @@ h6 {
   background-color: aliceblue;
 }
 
-.carousel-container {
+/* CAROUSEL */
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.slides {
+  position: relative;
+  height: 100%;
+  user-select: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.slide-number {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+}
+
+.previous-slide,
+.next-slide {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.previous-slide:hover,
+.next-slide:hover {
+  background-color: rgba(136, 136, 136, 0.459);
+}
+
+.previous-slide svg,
+.next-slide svg {
+  width: 28px;
+}
+
+.previous-slide {
+  left: 0px;
+}
+
+.next-slide {
+  right: 0px;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 3s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
 }
