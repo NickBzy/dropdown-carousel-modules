@@ -15,6 +15,7 @@ let slideIndex = 0
 displaySlides(slideIndex)
 nextSlide()
 previousSlide()
+selectSlide()
 
 function nextSlide() {
   const nextBtn = document.querySelector(".next-slide")
@@ -45,28 +46,29 @@ function displaySlides(slide) {
     slideIndex = slides.length - 1
   }
   slides[slideIndex].classList.remove("hidden")
+  displayDot(slideIndex)
 }
 
-// const wrapper = document.querySelector(".slides-wrapper")
-// const totalSlides = document.querySelectorAll(".slides").length
-// const nextBtn = document.querySelector(".next-slide")
-// const prevBtn = document.querySelector(".previous-slide")
+function displayDot(slide) {
+  const dots = document.querySelectorAll(".dot")
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].classList.remove("selected")
+  }
+  dots[slide].classList.add("selected")
+}
 
-// let currentSlide = 0
-
-// function showSlide(index) {
-//   wrapper.style.transform = `translateX(-${index * 100}%)`
-// }
-
-// nextBtn.addEventListener("click", () => {
-//   currentSlide = (currentSlide + 1) % totalSlides
-//   showSlide(currentSlide)
-// })
-
-// prevBtn.addEventListener("click", () => {
-//   currentSlide = (currentSlide - 1 + totalSlides) % totalSlides
-//   showSlide(currentSlide)
-// })
-
-// // Initial position
-// showSlide(currentSlide)
+function selectSlide() {
+  const dotsSelection = document.querySelector(".dots-selection")
+  dotsSelection.addEventListener("click", function (event) {
+    const selected = event.target
+    if (selected.classList.contains("dot")) {
+      if (selected.classList.contains("1")) {
+        displaySlides(0)
+      } else if (selected.classList.contains("2")) {
+        displaySlides(1)
+      } else if (selected.classList.contains("3")) {
+        displaySlides(2)
+      }
+    }
+  })
+}
